@@ -1,0 +1,30 @@
+{
+  "manifest_version": 2,
+  "name": "Chronos",
+  "version": "1.0",
+  "description": "The ultimate extension to show clocks from different parts of the world",
+  "author": "Kubiat Morgan",
+  "permissions": [
+    "storage"
+  ],
+  "background": {
+    "persistent": false,
+    "scripts": ["background.js"]
+  },
+  "options_page": "views/options.html",
+  "browser_action": {
+    "default_popup": "views/popup.html",
+    "default_icon": {
+      "16": "assets/images/chronos16.png",
+      "32": "assets/images/chronos32.png",
+      "48": "assets/images/chronos48.png",
+      "128": "assets/images/chronos128.png"
+    }
+  },
+  "icons": {
+    "16": "assets/images/chronos16.png",
+    "32": "assets/images/chronos32.png",
+    "48": "assets/images/chronos48.png",
+    "128": "assets/images/chronos128.png"
+  }
+}

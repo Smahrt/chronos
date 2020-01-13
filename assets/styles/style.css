@@ -1,0 +1,302 @@
+:root {
+  --blueActive: #1ceccf;
+  --blueNotActive: rgba(90, 225, 255, 0.025);
+  --blueBoxShadow: 0px -2px 14px rgba(90, 255, 255, 0.4);
+  --clockFontWeight: 4px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto Mono', monospace;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container .item label {
+  background: #ccc;
+  border-color: #ccc;
+}
+
+.container .item label::after {
+  background: rgb(44, 44, 55);
+  border-color: rgb(44, 44, 55);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  width: 45vw;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 16px;
+  font-weight: 500;
+  width: 100%;
+}
+
+.wrapper {
+  background-color: #10355a;
+}
+
+.clock-label {
+  text-align: center;
+  color: var(--blueActive);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.numbers {
+  margin: 1rem 0 0.2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.colon {
+  font-size: 18pt;
+  color: var(--blueActive);
+}
+
+.number {
+  width: 35px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.digit {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 14px;
+}
+
+.line {
+  display: block;
+  background-color: var(--blueNotActive);
+}
+
+.line-horizontal {
+  width: 14px;
+  height: var(--clockFontWeight);
+}
+
+.line-vertical {
+  width: var(--clockFontWeight);
+  height: 5px;
+}
+
+/*Lighting up the correct lines to make the numbers.*/
+
+/*0*/
+
+.num0 .line-top,
+.num0 .line-right-top,
+.num0 .line-left-top,
+.num0 .line-right-bottom,
+.num0 .line-left-bottom,
+.num0 .line-bottom,
+/*1*/
+.num1 .line-right-top,
+.num1 .line-right-bottom,
+/*2*/
+.num2 .line-top,
+.num2 .line-right-top,
+.num2 .line-middle,
+.num2 .line-left-bottom,
+.num2 .line-bottom,
+/*3*/
+.num3 .line-top,
+.num3 .line-right-top,
+.num3 .line-middle,
+.num3 .line-right-bottom,
+.num3 .line-bottom,
+/*4*/
+.num4 .line-right-top,
+.num4 .line-middle,
+.num4 .line-left-top,
+.num4 .line-right-bottom,
+/*5*/
+.num5 .line-top,
+.num5 .line-left-top,
+.num5 .line-middle,
+.num5 .line-right-bottom,
+.num5 .line-bottom,
+/*6*/
+.num6 .line-top,
+.num6 .line-left-top,
+.num6 .line-middle,
+.num6 .line-left-bottom,
+.num6 .line-right-bottom,
+.num6 .line-bottom,
+/*7*/
+.num7 .line-top,
+.num7 .line-right-top,
+.num7 .line-right-bottom,
+/*8*/
+.num8 .line,
+/*9*/
+.num9 .line-top,
+.num9 .line-left-top,
+.num9 .line-middle,
+.num9 .line-right-top,
+.num9 .line-right-bottom,
+.num9 .line-bottom {
+  background-color: var(--blueActive);
+  box-shadow: var(--blueBoxShadow);
+}
+
+/*Make 0, 1, 4, and 7 use corners when lighting up too*/
+
+.num0 .line-right-top::after,
+.num0 .line-left-top::after,
+.num1 .line-right-bottom::after,
+.num1 .line-right-top::after,
+.num4 .line-right-bottom::after,
+.num4 .line-right-top::after,
+.num4 .line-left-top::after,
+.num7 .line-right-bottom::after,
+.num7 .line-right-top::after {
+  content: '';
+  border-top: var(--clockFontWeight) solid var(--blueActive);
+  border-bottom: var(--clockFontWeight) solid var(--blueActive);
+  margin-top: -4px;
+  height: 100%;
+  display: block;
+}
+
+.inactive .line {
+  background-color: var(--blueNotActive);
+  box-shadow: none;
+}
+
+.inactive .line::after {
+  border-color: transparent;
+}
+
+.colon-second.inactive {
+  color: var(--blueNotActive);
+}
+
+.footer-wrapper {
+  padding: 0.5rem;
+  width: 250px;
+  color: white;
+  text-align: center;
+  background-color: rgb(20, 20, 26);
+}
+
+/*Pretty toggle*/
+
+input[type=checkbox] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+  display: none;
+}
+
+label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 40px;
+  height: 19px;
+  background: var(--blueNotActive);
+  display: block;
+  border: 2px solid white;
+  border-radius: 100px;
+  position: relative;
+}
+
+label:after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 7px;
+  height: 7px;
+  background: white;
+  border: 2px solid rgb(44, 44, 55);
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+input:checked+label,
+.container .item input:checked+label {
+  background: var(--blueActive);
+}
+
+.container .item input:checked+label {
+  border-color: var(--blueActive);
+}
+
+
+input:checked+label:after {
+  left: calc(100% - 5px);
+  transform: translateX(-100%);
+}
+
+/*AM PM*/
+
+.ampm-wrapper {
+  margin-left: 1rem;
+}
+
+.ampm {
+  color: var(--blueActive);
+  font-size: 12pt;
+}
+
+.timezones {
+  position: relative;
+}
+
+.zones {
+  display: none;
+  flex-direction: column;
+  max-height: 25vh;
+  width: 100%;
+  overflow: auto;
+  overflow-x: hidden;
+  position: absolute;
+  background-color: #eaeaea;
+}
+
+.zones .zone {
+  width: 100%;
+  padding: 0.5rem 0.2rem;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.zones .zone:hover {
+  background-color: #ccc;
+}
+
+#search-zone {
+  width: 100%;
+  font-size: 1em;
+  height: 2rem;
+  padding-left: 0.5rem;
+  outline: none;
+}

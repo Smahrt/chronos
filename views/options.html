@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chronos Options</title>
+    <link rel="stylesheet" href="../assets/styles/style.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="logo-container">
+        <img class="logo" src="../assets/images/chronos32.png"> &nbsp;&nbsp;
+        <h1>Chronos&trade;</h1>&nbsp;Options
+      </div>
+      <p style="margin-top: 0; text-align: center;">The ultimate extension to show clocks from different parts of the
+        world</p>
+      <div class="list">
+        <div class="item">
+          <span>24Hr Clock</span>
+          <input type="checkbox" class="toggle-12-24" id="switch1">
+          <label for="switch1"></label>
+        </div>
+        <div class="timezones">
+        <h3 class="timezone">Preferred Timezone: <span>Not selected</span></h3>
+
+          <input type="text" name="search-zone" id="search-zone" placeholder="Select timezone">
+          <div class="zones" id="zones">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../assets/scripts/options.js"></script>
+  </body>
+
+</html>
