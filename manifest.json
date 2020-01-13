@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "name": "Chronos",
-  "version": "1.0",
-  "description": "The ultimate extension to show clocks from different parts of the world",
+  "version": "0.0.1",
+  "description": "A pretty lightweight chrome extension to show clocks from different parts of the world",
   "author": "Kubiat Morgan",
   "permissions": [
     "storage"
