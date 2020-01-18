@@ -1,8 +1,18 @@
 :root {
-  --blueActive: #1ceccf;
-  --blueNotActive: rgba(90, 225, 255, 0.025);
-  --blueBoxShadow: 0px -2px 14px rgba(90, 255, 255, 0.4);
-  --clockFontWeight: 4px;
+  /* Main background color */
+  --background: #10355a;
+  /* Footer background color */
+  --footerBackground: rgb(20, 20, 26);
+  /* Font color of the clock text */
+  --clockTextColor: #1ceccf;
+  /* Color of the default clock text = [--colorTextColor] + 06 */
+  --clockTextShadowColor: #1ceccf06;
+  /* Glow color of the clock text (this is only used in --clockTextGlow var) */
+  --clockTextGlowColor: rgba(90, 255, 255, 0.4);
+  /* Glow of the clock text (Set this variable to 'none' or comment it out to disable glow) */
+  --clockTextGlow: 0px -2px 14px var(--clockTextGlowColor);
+  /* Thickness/Line weight of the clock text (except the AM/PM label) */
+  --clockTextWeight: 4px;
 }
 
 * {
@@ -17,6 +27,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+body.dark-mode {
+  /* Redeclare desired variables here with specified colors */
 }
 
 .container {
@@ -57,12 +71,12 @@ body {
 }
 
 .wrapper {
-  background-color: #10355a;
+  background-color: var(--background);
 }
 
 .clock-label {
   text-align: center;
-  color: var(--blueActive);
+  color: var(--clockTextColor);
   text-transform: uppercase;
   margin-bottom: 1rem;
 }
@@ -76,7 +90,7 @@ body {
 
 .colon {
   font-size: 18pt;
-  color: var(--blueActive);
+  color: var(--clockTextColor);
 }
 
 .number {
@@ -94,16 +108,16 @@ body {
 
 .line {
   display: block;
-  background-color: var(--blueNotActive);
+  background-color: var(--clockTextShadowColor);
 }
 
 .line-horizontal {
   width: 14px;
-  height: var(--clockFontWeight);
+  height: var(--clockTextWeight);
 }
 
 .line-vertical {
-  width: var(--clockFontWeight);
+  width: var(--clockTextWeight);
   height: 5px;
 }
 
@@ -163,8 +177,8 @@ body {
 .num9 .line-right-top,
 .num9 .line-right-bottom,
 .num9 .line-bottom {
-  background-color: var(--blueActive);
-  box-shadow: var(--blueBoxShadow);
+  background-color: var(--clockTextColor);
+  box-shadow: var(--clockTextGlow);
 }
 
 /*Make 0, 1, 4, and 7 use corners when lighting up too*/
@@ -179,15 +193,15 @@ body {
 .num7 .line-right-bottom::after,
 .num7 .line-right-top::after {
   content: '';
-  border-top: var(--clockFontWeight) solid var(--blueActive);
-  border-bottom: var(--clockFontWeight) solid var(--blueActive);
+  border-top: var(--clockTextWeight) solid var(--clockTextColor);
+  border-bottom: var(--clockTextWeight) solid var(--clockTextColor);
   margin-top: -4px;
   height: 100%;
   display: block;
 }
 
 .inactive .line {
-  background-color: var(--blueNotActive);
+  background-color: var(--clockTextShadowColor);
   box-shadow: none;
 }
 
@@ -196,7 +210,7 @@ body {
 }
 
 .colon-second.inactive {
-  color: var(--blueNotActive);
+  color: var(--clockTextShadowColor);
 }
 
 .footer-wrapper {
@@ -204,7 +218,7 @@ body {
   width: 250px;
   color: white;
   text-align: center;
-  background-color: rgb(20, 20, 26);
+  background-color: var(--footerBackground);
 }
 
 /*Pretty toggle*/
@@ -221,7 +235,7 @@ label {
   text-indent: -9999px;
   width: 40px;
   height: 19px;
-  background: var(--blueNotActive);
+  background: var(--clockTextShadowColor);
   display: block;
   border: 2px solid white;
   border-radius: 100px;
@@ -243,11 +257,11 @@ label:after {
 
 input:checked+label,
 .container .item input:checked+label {
-  background: var(--blueActive);
+  background: var(--clockTextColor);
 }
 
 .container .item input:checked+label {
-  border-color: var(--blueActive);
+  border-color: var(--clockTextColor);
 }
 
 
@@ -263,8 +277,9 @@ input:checked+label:after {
 }
 
 .ampm {
-  color: var(--blueActive);
+  color: var(--clockTextColor);
   font-size: 12pt;
+  text-shadow: var(--clockTextGlow);
 }
 
 .timezones {
