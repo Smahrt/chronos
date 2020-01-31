@@ -2,6 +2,8 @@
 /*Clock Functionality*/
 
 //Selectors
+const wrapperEl = document.getElementById('wrapper');
+const footerEl = document.getElementById('footer-wrapper');
 const numSecond_Digit1 = document.querySelectorAll('.num-second .digit1')[0];
 const numSecond_Digit2 = document.querySelectorAll('.num-second .digit2')[0];
 const numSecondArray = [numSecond_Digit1, numSecond_Digit2];
@@ -18,14 +20,22 @@ const toggleHour = document.getElementsByClassName('toggle-12-24')[0];
 const ampm = document.getElementsByClassName('ampm')[0];
 const timezoneText = document.querySelector('.footer-wrapper');
 
-getPreferences(['twentyFourHour', 'preferredTimezone'])
+getPreferences(['twentyFourHour', 'preferredTimezone', 'darkModeEnabled'])
 	.then(res => {
 		timezoneText.textContent = res.preferredTimezone;
 		timer(res.twentyFourHour, res.preferredTimezone);
 		setInterval(() => timer(res.twentyFourHour, res.preferredTimezone), 1000);
-	});
+		if(res.darkModeEnabled === true){
+			footerEl.classList.add('dark-footer');
+			wrapperEl.classList.add('dark-wrapper');
 
-function timer(isTwentyFourHour, timezone) {
+		}else{
+			footerEl.classList.remove('dark-footer');
+			wrapperEl.classList.remove('dark-wrapper');
+		}
+		
+	 });
+	function timer(isTwentyFourHour, timezone) {
 	const now = getDateByTimezone(new Date(), timezone);
 
 	//Get seconds, minute, an hours from Date.

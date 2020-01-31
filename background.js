@@ -3,13 +3,15 @@
  * @typedef {object} PreferencesOptions
  * @property {string} preferredTimezone
  * @property {boolean} twentyFourHour
+ * @property {boolean} darkModeEnabled
  */
 
 chrome.runtime.onInstalled.addListener(function () {
   // set defaults
   setPreferences({
     preferredTimezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-    twentyFourHour: true
+    twentyFourHour: true,
+    darkModeEnabled: false
   });
 });
 
