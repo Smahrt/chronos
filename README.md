@@ -9,7 +9,9 @@ Installing chronos is pretty straightforward.
 
 ### Simple
 
-#### 1. Via the Chrome Web Store (awaiting review)
+#### 1. Via the Chrome Web Store
+
+* Add to chrome via https://chrome.google.com/webstore/detail/chronos/lljmmpbgnloajglfiokomcdepgknmmoh?hl=en
 
 ### Manual
 
