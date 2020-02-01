@@ -1,4 +1,6 @@
 const toggleHour = document.getElementsByClassName('toggle-12-24')[0];
+const toggleDarkMode = document.getElementById('switch2');
+const view = document.querySelector('body');
 const zones = document.querySelector('.zones');
 const selectedTimezone = document.querySelector('.timezone span');
 const searchZone = document.querySelector('#search-zone');
@@ -6,7 +8,7 @@ var allZones = [];
 
 Promise.all([
     fetch('/data/zone.csv'),
-    getPreferences(['twentyFourHour', 'preferredTimezone'])
+    getPreferences(['twentyFourHour', 'preferredTimezone', 'darkModeEnabled'])
   ])
   .then(async res => [processData(await res[0].text()).map(t => t[2]).filter(t => Boolean(t)), res[1]])
   .then(data => {
@@ -23,7 +25,15 @@ toggleHour.onclick = function () {
     twentyFourHour: toggleHour.checked
   }).then(() => console.log('preferences updated'));
 };
-
+// toogle dark mode
+toggleDarkMode.onclick = function (){
+  setPreferences({
+    darkModeEnabled: toggleDarkMode.checked
+  }).then(() => {
+    view.classList.toggle('dark-mode');
+    zones.classList.toggle('dark-zone');
+  })
+}
 searchZone.onfocus = function () {
   zones.style.display = 'flex';
 };
