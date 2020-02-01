@@ -12,7 +12,10 @@ Promise.all([
   ])
   .then(async res => [processData(await res[0].text()).map(t => t[2]).filter(t => Boolean(t)), res[1]])
   .then(data => {
+    // set preference values on load
     toggleHour.checked = data[1].twentyFourHour;
+    toggleDarkMode.checked = data[1].darkModeEnabled;
+    view.classList[toggleDarkMode.checked ? 'add' : 'remove']('dark-mode');
     selectedTimezone.textContent = data[1].preferredTimezone;
     allZones = data[0];
     renderZones(allZones);
@@ -25,15 +28,16 @@ toggleHour.onclick = function () {
     twentyFourHour: toggleHour.checked
   }).then(() => console.log('preferences updated'));
 };
+
 // toogle dark mode
-toggleDarkMode.onclick = function (){
+toggleDarkMode.onclick = function () {
   setPreferences({
     darkModeEnabled: toggleDarkMode.checked
   }).then(() => {
-    view.classList.toggle('dark-mode');
-    zones.classList.toggle('dark-zone');
-  })
-}
+    view.classList[toggleDarkMode.checked ? 'add' : 'remove']('dark-mode');
+  });
+};
+
 searchZone.onfocus = function () {
   zones.style.display = 'flex';
 };

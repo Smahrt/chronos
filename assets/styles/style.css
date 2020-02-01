@@ -7,7 +7,7 @@
   /* Footer background color */
   --footerBackground: #153c63;
   /* Font color of the clock text */
-  --clockTextColor: #1ceccf;
+  --clockTextColor: #153c63;
   /* Color of the default clock text = [--colorTextColor] + 06 */
   --clockTextShadowColor: #88888806;
   /* Glow color of the clock text (this is only used in --clockTextGlow var) */
@@ -16,23 +16,6 @@
   --clockTextGlow: 0px -2px 14px var(--clockTextGlowColor);
   /* Thickness/Line weight of the clock text (except the AM/PM label) */
   --clockTextWeight: 4px;
-
-  /* dark mode styles */
-    /* Main background color */
-    --dark-background: #153c63;
-    /* text color */
-    --dark-text-color: #fff;
-    /* Footer background color */
-    --dark-footerBackground: rgb(20, 20, 26);
-    /* Font color of the clock text */
-    --dark-clockTextColor: #1ceccf;
-    /* Color of the default clock text = [--colorTextColor] + 06 */
-    --dark-clockTextShadowColor: #1ceccf06;
-    /* Glow color of the clock text (this is only used in --clockTextGlow var) */
-    --dark-clockTextGlowColor: rgba(90, 255, 255, 0.4);
-    /* Glow of the clock text (Set this variable to 'none' or comment it out to disable glow) */
-    --dark-clockTextGlow: 0px -2px 14px var(--clockTextGlowColor);
-    /* Thickness/Line weight of the clock text (except the AM/PM label) */
 }
 
 * {
@@ -47,13 +30,26 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all ease-in-out .2s;
   background-color: var(--background);
   color: var(--text-color);
 }
-body.dark-mode{
-  background-color: var(--dark-background);
-  color: var(--dark-text-color);
+
+/* dark mode styles */
+body.dark-mode {
+  /* Main background color */
+  --background: #153c63;
+  /* text color */
+  --text-color: #fff;
+  /* Footer background color */
+  --footerBackground: rgb(20, 20, 26);
+  /* Font color of the clock text */
+  --clockTextColor: #1ceccf;
+  /* Color of the default clock text = [--colorTextColor] + 06 */
+  --clockTextShadowColor: #1ceccf06;
+  /* Glow color of the clock text (this is only used in --clockTextGlow var) */
+  --clockTextGlowColor: rgba(90, 255, 255, 0.4);
+  /* Glow of the clock text (Set this variable to 'none' or comment it out to disable glow) */
+  --clockTextGlow: 0px -2px 14px var(--clockTextGlowColor);
 }
 
 .container {
@@ -243,11 +239,13 @@ body.dark-mode{
   text-align: center;
   background-color: var(--footerBackground);
 }
-.dark-footer{
+
+.dark-footer {
   background-color: var(--text-color);
   color: #ffffff;
 }
-.dark-wrapper{
+
+.dark-wrapper {
   background-color: var(--dark-background);
 }
 
@@ -326,13 +324,15 @@ input:checked+label:after {
   overflow-x: hidden;
   position: absolute;
 }
-.dark-zone{
+
+.dark-zone {
   background-color: var(--dark-background);
   color: var(--dark-text-color);
   border: 0.5px solid var(--clockTextColor);
 }
-.dark-zone .zone:hover{
-  color:  var(--text-color);
+
+.dark-zone .zone:hover {
+  color: var(--text-color);
 }
 
 .zones .zone {
