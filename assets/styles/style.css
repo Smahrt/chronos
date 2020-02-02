@@ -352,4 +352,9 @@ input:checked+label:after {
   height: 2rem;
   padding-left: 0.5rem;
   outline: none;
+  border-radius: 0.2rem;
+  border: 1px solid #dadada;
+}
+.timezone span{
+  color: var(--clockTextColor);
 }
